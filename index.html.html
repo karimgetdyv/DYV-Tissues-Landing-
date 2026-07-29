@@ -30,13 +30,11 @@
   .font-display{font-family:'Cairo',sans-serif;}
   .font-mono{font-family:'IBM Plex Mono',monospace; direction:ltr; unicode-bidi:plaintext;}
 
-  /* hazard tape strip */
   .tape-strip{
     height:8px;
     background-image:repeating-linear-gradient(-45deg, var(--kraft) 0 14px, var(--kraft-dark) 14px 28px);
   }
 
-  /* perforation edges */
   .perf-top{position:relative;}
   .perf-top::before{
     content:"";
@@ -161,9 +159,7 @@
       <p class="text-xs text-white/70 mt-1">4 أسئلة سريعة، أقل من دقيقة</p>
     </div>
 
-    <div class="px-6 pt-6 flex items-center justify-center gap-2" id="steps-indicator">
-      <!-- filled by JS -->
-    </div>
+    <div class="px-6 pt-6 flex items-center justify-center gap-2" id="steps-indicator"></div>
 
     <form id="dyv-form" class="px-6 py-8" onsubmit="return false;">
 
@@ -269,7 +265,6 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ---------- Reveal on scroll ----------
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
@@ -278,7 +273,6 @@
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
 
-  // ---------- Product data ----------
   const WA_NUMBER = "201037689999";
   const products = [
     {code:"DYV-PT-01", cat:"ورقيات", name:"مناديل سفرة (كوتشينة)", desc:"مناديل ناعمة متعددة الاستخدام للطاولات."},
@@ -318,7 +312,6 @@
     grid.appendChild(card);
   });
 
-  // ---------- Lead form (4 steps) ----------
   const steps = Array.from(document.querySelectorAll('.form-step'));
   const totalSteps = steps.length;
   let current = 1;
